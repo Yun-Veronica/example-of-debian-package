@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+# Проверка прав суперпользователя
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Этот скрипт должен быть запущен от имени суперпользователя." >&2
+    exit 1
+fi
+
+# Проверка наличия Python
+if ! command -v python3 &>/dev/null; then
+    echo "Python 3 не установлен. Установите его перед продолжением." >&2
+    exit 1
+fi
+
+# Example: Check if a previous version of the program is installed
+if [ -f /usr/local/bin/my-program ]; then
+    echo "Previous version detected, removing it..."
+    rm -f /usr/local/bin/my-program
+fi
+
+#нужно и важно
+install -d -m 755 /var/lib/my-program
+
+echo "Preinst completed"
+
+exit 0

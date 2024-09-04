@@ -1,0 +1,8 @@
+Package: my-program
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: all
+Depends: python3
+Maintainer: Your Name <youremail@example.com>
+Description: A simple Python program with local dependencies
