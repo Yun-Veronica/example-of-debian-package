@@ -2,15 +2,15 @@
 
 set -e
 
-# Проверка прав суперпользователя
+# Check for root privileges
 if [ "$(id -u)" -ne 0 ]; then
-    echo "Этот скрипт должен быть запущен от имени суперпользователя." >&2
+    echo "This script must be run as root." >&2
     exit 1
 fi
 
-# Проверка наличия Python
+# Check for Python
 if ! command -v python3 &>/dev/null; then
-    echo "Python 3 не установлен. Установите его перед продолжением." >&2
+    echo "Python 3 is not installed. Install it before continuing. " >&2
     exit 1
 fi
 
@@ -20,7 +20,7 @@ if [ -f /usr/local/bin/my-program ]; then
     rm -f /usr/local/bin/my-program
 fi
 
-#нужно и важно
+#necessary and important
 install -d -m 755 /var/lib/my-program
 
 echo "Preinst completed"
